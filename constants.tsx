@@ -31,9 +31,9 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Nischaya008/RayTracerNG",
     type: "Graphics Engine",
     images: [
-      "assets/Ray_Tracer1.jpeg",
-      "assets/Ray_Tracer2.jpeg",
-      "assets/Ray_Tracer3.jpeg"
+      "/assets/Ray_Tracer1.jpeg",
+      "/assets/Ray_Tracer2.jpeg",
+      "/assets/Ray_Tracer3.jpeg"
     ]
   },
   {
@@ -46,9 +46,9 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Nischaya008/ResumifyNG",
     type: "AI Platform",
     images: [
-      "assets/Resumify1.jpeg",
-      "assets/Resumify2.jpeg",
-      "assets/Resumify3.jpeg"
+      "/assets/Resumify1.jpeg",
+      "/assets/Resumify2.jpeg",
+      "/assets/Resumify3.jpeg"
     ]
   },
   {
@@ -61,9 +61,9 @@ export const PROJECTS: Project[] = [
     github: "https://github.com/Nischaya008/CodeHiveNG",
     type: "SaaS Product",
     images: [
-      "assets/Codehive1.png",
-      "assets/Codehive2.png",
-      "assets/Codehive3.png"
+      "/assets/Codehive1.png",
+      "/assets/Codehive2.png",
+      "/assets/Codehive3.png"
     ]
   }
 ];

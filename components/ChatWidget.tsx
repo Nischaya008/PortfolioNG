@@ -20,7 +20,7 @@ const ChatWidget: React.FC = () => {
           <div className="flex items-center gap-3">
             <div className="relative">
               <div className="w-10 h-10 rounded-full bg-black/10 overflow-hidden border border-black/10">
-                <img src="../assets/Hero_Pic.jpg" alt="Nischaya" className="w-full h-full object-cover" />
+                <img src="/assets/Hero_Pic.jpg" alt="Nischaya" className="w-full h-full object-cover" />
               </div>
               <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-white rounded-full border-2 border-primary"></div>
             </div>

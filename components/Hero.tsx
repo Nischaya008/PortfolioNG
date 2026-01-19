@@ -1,7 +1,7 @@
 import React from 'react';
 import { Download, ArrowRight, MapPin } from 'lucide-react';
 import { RESUME_LINK, EMAIL } from '../constants';
-import ResumePDF from '../assets/Resume_NG.pdf';
+const ResumePDF = "/assets/Resume_NG.pdf";
 
 const Hero: React.FC = () => {
   return (
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
 
             <div className="relative w-full h-full rounded-[2rem] overflow-hidden bg-zinc-900 border-2 border-white/10 rotate-6">
               <img
-                src="../assets/Hero_Pic5.jpeg"
+                src="/assets/Hero_Pic5.jpeg"
                 alt="Nischaya Garg"
                 className="w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-500"
               />
