@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Projects from './components/Projects';
@@ -12,13 +12,17 @@ import ScrollToTop from './components/ScrollToTop';
 import Logo from './components/Logo';
 import WhatIDo from './components/WhatIDo';
 import Achievements from './components/Achievements';
+import Loader from './components/Loader';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
   return (
     <div className="bg-transparent min-h-screen text-white font-sans selection:bg-primary selection:text-black cursor-none">
+      {loading && <Loader onComplete={() => setLoading(false)} />}
       <Cursor />
       <Background />
-      <Logo />
+      <Logo onClick={() => setLoading(true)} />
       <Navbar />
       <main className="relative z-10">
         <Hero />
