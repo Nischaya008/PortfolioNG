@@ -60,8 +60,13 @@
     select,
     textarea,
     .cursor-pointer {
-      cursor: none;
+      cursor: none !important;
       /* Ensure custom cursor is used everywhere */
+    }
+    
+    /* Force custom cursor on all links, especially project buttons */
+    a[href] {
+      cursor: none !important;
     }
 
     .no-scrollbar::-webkit-scrollbar {
@@ -71,6 +76,90 @@
     .no-scrollbar {
       -ms-overflow-style: none;
       scrollbar-width: none;
+    }
+
+    /* Global hover system - makes hover work even when scrolling */
+    /* This uses CSS that applies styles when cursor-hover-active class is present */
+    
+    /* Force hover states using CSS specificity and !important */
+    .cursor-hover-active[class*="hover:border-primary"] {
+      border-color: rgba(0, 255, 136, 0.3) !important;
+    }
+    
+    .group-hover-active [class*="group-hover:text-primary"] {
+      color: #00ff88 !important;
+    }
+    
+    .cursor-hover-active[class*="hover:bg-zinc-900"] {
+      background-color: rgba(39, 39, 42, 0.5) !important;
+    }
+    
+    .group-hover-active [class*="group-hover:text-primary/20"] {
+      color: rgba(0, 255, 136, 0.2) !important;
+    }
+    
+    .group-hover-active [class*="group-hover:border-primary/20"] {
+      border-color: rgba(0, 255, 136, 0.2) !important;
+    }
+    
+    .cursor-hover-active[class*="hover:border-primary/30"] {
+      border-color: rgba(0, 255, 136, 0.3) !important;
+      transform: translateY(-4px) !important;
+    }
+    
+    .group-hover-active [class*="group-hover:bg-primary/20"] {
+      background-color: rgba(0, 255, 136, 0.2) !important;
+    }
+    
+    .cursor-hover-active[class*="hover:border-primary/20"] {
+      border-color: rgba(0, 255, 136, 0.2) !important;
+    }
+    
+    .group-hover-active [class*="group-hover:bg-primary"] {
+      background-color: #00ff88 !important;
+    }
+    
+    .group-hover-active [class*="group-hover:text-primary"]:not([class*="group-hover:text-primary/20"]) {
+      color: #00ff88 !important;
+    }
+    
+    /* Responsive styles for screens < 1160px */
+    @media (max-width: 1159px) {
+      /* Container adjustments */
+      .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+    
+    /* Fix navbar click-through on mobile screens and make it bigger */
+    @media (max-width: 424px) {
+      .mobile-navbar {
+        z-index: 99999 !important;
+        pointer-events: auto !important;
+        bottom: 1rem !important;
+      }
+      
+      .mobile-navbar * {
+        pointer-events: auto !important;
+      }
+      
+      /* Make navbar bigger on mobile */
+      .mobile-navbar > div {
+        padding: 0.75rem 0.5rem !important;
+        min-height: 56px;
+      }
+      
+      /* Ensure buttons are clickable and bigger */
+      .mobile-nav-button {
+        pointer-events: auto !important;
+        touch-action: manipulation !important;
+        -webkit-tap-highlight-color: transparent !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+        position: relative;
+        z-index: 100000 !important;
+      }
     }
   </style>
   <script type="importmap">

@@ -13,9 +13,13 @@ import Logo from './components/Logo';
 import WhatIDo from './components/WhatIDo';
 import Achievements from './components/Achievements';
 import Loader from './components/Loader';
+import { useDirectHover } from './hooks/useDirectHover';
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [isChatOpen, setIsChatOpen] = useState(false);
+
+  useDirectHover(); // Initialize direct hover manager that works on scroll
 
   return (
     <div className="bg-transparent min-h-screen text-white font-sans selection:bg-primary selection:text-black cursor-none">
@@ -25,7 +29,7 @@ function App() {
       <Logo onClick={() => setLoading(true)} />
       <Navbar />
       <main className="relative z-10">
-        <Hero />
+        <Hero openChat={() => setIsChatOpen(true)} />
         <Experience />
         <Projects />
         <WhatIDo />
@@ -33,7 +37,11 @@ function App() {
         <Achievements />
       </main>
       <Footer />
-      <ChatWidget />
+      <ChatWidget
+        isOpen={isChatOpen}
+        onClose={() => setIsChatOpen(false)}
+        onToggle={() => setIsChatOpen(!isChatOpen)}
+      />
       <ScrollToTop />
     </div>
   );

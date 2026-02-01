@@ -7,13 +7,13 @@ const Logo: React.FC = () => {
   };
 
   return (
-    <div className="absolute top-6 left-6 sm:left-12 z-50 flex items-center">
+    <div className="absolute top-4 sm:top-6 left-4 sm:left-6 md:left-12 z-50 flex items-center">
       <a
         href="/"
         onClick={handleClick}
         className="relative group cursor-none flex items-center"
       >
-        <div className="relative w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center">
+        <div className="relative w-9 h-9 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
           {/* Orbiting Ring and Dot */}
           <div className="absolute inset-0 rounded-full border border-primary/20 animate-spin-medium">
             <div className="absolute top-0 left-1/2 w-1.5 h-1.5 bg-primary rounded-full -translate-x-1/2 -translate-y-1/2 shadow-[0_0_8px_rgba(0,255,136,0.8)]"></div>
