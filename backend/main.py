@@ -6,8 +6,8 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 import groq
 
-from .models import ChatRequest, ChatResponse
-from .rag_engine import RAGEngine
+from models import ChatRequest, ChatResponse
+from rag_engine import RAGEngine
 
 # Load environment variables
 load_dotenv()
