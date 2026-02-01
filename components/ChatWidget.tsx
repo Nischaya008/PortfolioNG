@@ -50,8 +50,8 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ isOpen, onClose, onToggle }) =>
     const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
 
     try {
-      // Direct call to backend using 127.0.0.1 (Fixes Windows IPv6 'Stalled' connection issues)
-      const response = await fetch('http://127.0.0.1:8000/api/nisbot', {
+      // Use relative path so it works with Vite proxy (local) and Vercel rewrites (prod)
+      const response = await fetch('/api/nisbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
