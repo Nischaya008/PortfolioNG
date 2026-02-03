@@ -3,6 +3,8 @@ import { MessageCircle, X, Linkedin, Send, Loader2, AlertCircle } from 'lucide-r
 import ReactMarkdown from 'react-markdown';
 import { LINKEDIN } from '../constants';
 
+import confetti from 'canvas-confetti';
+
 interface Message {
   role: 'user' | 'assistant';
   content: string;
@@ -13,6 +15,20 @@ interface ChatWidgetProps {
   onClose: () => void;
   onToggle: () => void;
 }
+
+const EASTER_EGGS: Record<string, string> = {
+  "shreshta": "Hi baby, a little surprise easter egg for you !",
+  "gormal": "Hi baby, a little surprise easter egg for you !",
+  "chungu": "Hi baby, a little surprise easter egg for you !",
+  "makalu": "Hi baby, a little surprise easter egg for you !",
+  "bartan": "Hi baby, a little surprise easter egg for you !",
+  "lal": "Hello papa, a little easter egg for the one who shaped my personality !",
+  "lal bahadur": "Hello papa, a little easter egg for the one who shaped my personality !",
+  "shalini": "Hello mom, a little easter egg for the one who shaped my personality !",
+  "shalu": "Hello mom, a little easter egg for the one who shaped my personality !",
+  "niya": "Hello niya, padhai krle !",
+  "anaya": "Hello niya, padhai krle !"
+};
 
 const ChatWidget: React.FC<ChatWidgetProps> = ({ isOpen, onClose, onToggle }) => {
   // Remove internal isOpen state
@@ -39,24 +55,57 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ isOpen, onClose, onToggle }) =>
     if (!inputValue.trim() || isLoading) return;
 
     const userMsg = inputValue.trim();
+    const lowerUserMsg = userMsg.toLowerCase();
+
     setInputValue("");
     setError(null);
 
     // Add user message
     setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
+
+    // Check for Easter Eggs
+    if (EASTER_EGGS[lowerUserMsg]) {
+      const responseText = EASTER_EGGS[lowerUserMsg];
+
+      // Trigger global confetti
+      confetti({
+        particleCount: 100,
+        spread: 70,
+        origin: { y: 0.6 },
+        zIndex: 9999 // Ensure it's on top of everything
+      });
+
+      // Simulate bot typing delay slightly
+      setTimeout(() => {
+        setMessages(prev => [...prev, { role: 'assistant', content: responseText }]);
+      }, 500);
+
+      return;
+    }
+
     setIsLoading(true);
 
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 30000); // 30s timeout
 
     try {
+      // Get conversation history (last 2 messages excluding the new one we just added locally logic-wise, 
+      // but actually we need to be careful with state update batching. 
+      // Using `messages` here uses the state from render start, which doesn't include the current userMsg yet.
+      // The requirement: "atleast 2 latest messages context".
+      // We will send the messages state as history. 
+      const history = messages.slice(-2);
+
       // Use relative path so it works with Vite proxy (local) and Vercel rewrites (prod)
       const response = await fetch('/api/nisbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: userMsg }),
+        body: JSON.stringify({
+          message: userMsg,
+          history: history
+        }),
         signal: controller.signal,
       });
 
@@ -86,7 +135,7 @@ const ChatWidget: React.FC<ChatWidgetProps> = ({ isOpen, onClose, onToggle }) =>
         className={`
           transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] origin-bottom-right pointer-events-auto
           ${isOpen ? 'scale-100 opacity-100 translate-y-0' : 'scale-90 opacity-0 translate-y-8 pointer-events-none'}
-          w-[360px] sm:w-[480px] h-[600px] bg-gradient-to-br from-zinc-900 to-[#001a0e] border border-[#00FF88]/20 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden flex flex-col
+          w-[90vw] max-w-[360px] sm:w-[480px] sm:max-w-none h-[600px] max-h-[80vh] bg-gradient-to-br from-zinc-900 to-[#001a0e] border border-[#00FF88]/20 rounded-2xl shadow-2xl shadow-black/50 overflow-hidden flex flex-col
         `}
       >
         {/* Header */}

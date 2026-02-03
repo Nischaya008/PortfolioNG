@@ -148,7 +148,7 @@ const Hero: React.FC<HeroProps> = ({ openChat }) => {
             </div>
 
             {/* Floating Badges */}
-            <div className="absolute bottom-4 -left-8 sm:-left-16 bg-card/90 backdrop-blur-md border border-white/10 p-3 sm:p-4 rounded-xl shadow-xl z-20">
+            <div className="absolute bottom-4 left-0 sm:-left-16 bg-card/90 backdrop-blur-md border border-white/10 p-3 sm:p-4 rounded-xl shadow-xl z-20">
               <div className="flex items-center gap-2 sm:gap-3">
                 <div className="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
                 <div>
@@ -158,7 +158,7 @@ const Hero: React.FC<HeroProps> = ({ openChat }) => {
               </div>
             </div>
 
-            <div className="absolute top-1/4 -left-12 sm:-left-20 transform -translate-y-1/2 bg-card/90 backdrop-blur-md border border-white/10 p-2 sm:p-3 rounded-xl shadow-xl z-20">
+            <div className="absolute top-1/4 -left-4 sm:-left-20 transform -translate-y-1/2 bg-card/90 backdrop-blur-md border border-white/10 p-2 sm:p-3 rounded-xl shadow-xl z-20">
               <div className="flex items-center gap-2">
                 <span className="text-lg sm:text-xl">🔥</span>
                 <div>
@@ -168,7 +168,7 @@ const Hero: React.FC<HeroProps> = ({ openChat }) => {
               </div>
             </div>
 
-            <div className="absolute top-8 -right-4 sm:-right-8 bg-card/90 backdrop-blur-md border border-white/10 p-2 sm:p-3 rounded-xl shadow-xl z-20">
+            <div className="absolute top-8 -right-2 sm:-right-8 bg-card/90 backdrop-blur-md border border-white/10 p-2 sm:p-3 rounded-xl shadow-xl z-20">
               <div className="flex items-center gap-2">
 
                 <div>
